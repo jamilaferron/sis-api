@@ -16,7 +16,7 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('session_id');
-            $table->foreign('session_id')->references('id')->on('sessions');
+            $table->foreign('session_id')->references('id')->on('support_sessions');
             $table->integer('submitted_by');
             $table->foreign('submitted_by')->references('user_id')->on('support_workers');
             $table->timestamp('created_at')->default(DB::raw('now()'));

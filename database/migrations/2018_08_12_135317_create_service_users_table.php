@@ -15,7 +15,7 @@ class CreateServiceUsersTable extends Migration
     {
         Schema::create('service_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('su_name');
             $table->date('dob');
             $table->json('needs');
             $table->mediumText('background_Info');
@@ -25,7 +25,8 @@ class CreateServiceUsersTable extends Migration
             $table->foreign('socialworker_id')->references('id')->on('social_workers');
             $table->integer('placementOfficer_id');
             $table->foreign('placementOfficer_id')->references('id')->on('social_workers')->nullable();
-            $table->timestamps();
+            $table->timestampTz('created_at')->default(DB::raw('now()'));
+            $table->timestampTz('updated_at')->default(DB::raw('now()'));
         });
     }
 

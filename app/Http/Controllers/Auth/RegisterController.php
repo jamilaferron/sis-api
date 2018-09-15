@@ -60,10 +60,10 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|exists:users,email',
             'password' => array(
                 'required',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{10,})/',
-                'min:10',
-                'dumbpwd',
-                'confirmed'),
+            'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{10,})/',
+            'min:10',
+            'dumbpwd',
+            'confirmed'),
         ]);
     }
 
@@ -105,7 +105,7 @@ class RegisterController extends Controller
         DB::table('verify_users')->insert([
             'user_id' => $user->id,
             'token' => str_random(40)
-        ]);
+            ]);
 
 
         Mail::to($user->email)->send(new VerifyMail($user));

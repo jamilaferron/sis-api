@@ -19,8 +19,8 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        //return response()->json($users);
-        return UserResource::collection(User::with('supportworker')->paginate(15));
+        return response()->json($users);
+        //return UserResource::collection(User::with('supportworker')->paginate(15));
     }
 
     /**
@@ -102,8 +102,8 @@ class UserController extends Controller
             $user->password = $request->input('password');
             $user->save();
 
-            //return response()->json($user);
-            return new UserResource($user);
+            return response()->json($user);
+            //return new UserResource($user);
         }
 
     }

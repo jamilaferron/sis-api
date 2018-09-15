@@ -24,3 +24,6 @@ Route::get('check-queue', function (){
 
     return 'Working';
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

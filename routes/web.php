@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('check-queue', function (){
+    Mail::to('jamila_ferron@hotmail.co.uk')->send(new TestMail());
+
+    return 'Working';
+});
